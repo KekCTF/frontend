@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "kekctf"
+  "defaultProject": "kekctf",
+  "cli": {
+    "analytics": "37856170-e07d-4e6e-b04c-8554a693c4d7"
+  }
 }
