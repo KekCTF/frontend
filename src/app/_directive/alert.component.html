@@ -1,0 +1,6 @@
+<div uk-alert
+     *ngIf="message" [ngStyle]="{ 'background-color': message.type === 'success' ? 'green' : 'red' }"
+     style="margin-bottom: 0;position: fixed;top: 0;left: 0;width: 100vw;z-index: 1024;height: 7vh;display: flex;justify-content: center;align-items: center;flex-flow: row-reverse nowrap;">
+  <a class="uk-alert-close" uk-close style="margin-left: 15px; position: relative; top: 0; left: 0; padding: 0;"></a>
+  <p>{{message.text}}</p>
+</div>

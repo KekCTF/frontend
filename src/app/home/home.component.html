@@ -1,0 +1,39 @@
+<h3 class="text-center text-white">
+  Welcome {{ this.user.username }}
+</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div *ngFor="let category of getCategoryArrays()" class="col-sm-2">
+      <h5 class="text-white">
+        {{ category.category }}
+      </h5>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div *ngFor="let category of getCategoryArrays()" class="col-sm-2">
+      <div *ngFor="let challenge of category.challenges">
+        <div class="card">
+          <div class="card-body text-white">
+            <div class="card-title">
+              {{ formatTitle(challenge.title) }}
+            </div>
+            <a [routerLink]="['/challenge', challenge.id]" class="btn"
+               [ngClass]="{'btn-primary': !isSolved(challenge.id), 'btn-success': isSolved(challenge.id)}">Points: {{
+              challenge.points }}</a>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>
+
+<a class="btn btn-primary" [routerLink]="'/scoreboard'">Scoreboard</a>
+<br *ngIf="isAdmin()"/>
+<a class="btn btn-primary" [routerLink]="'/admin'" *ngIf="isAdmin()">Admin page</a>
+<br/>
+<button class="btn btn-primary" (click)="this.logout()">Log out</button>

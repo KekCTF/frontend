@@ -1,0 +1,13 @@
+<h1 class="text-white">
+  Updating user
+</h1>
+<h5 class="text-warning">
+  Id: {{ user.id }}
+  <br/>
+  Keep input boxes empty if you don't want to update them.
+</h5>
+<input type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="Username"/>
+<input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password"/>
+<button (click)="submit()" class="btn btn-primary">Submit</button>
+<br/>
+<a [routerLink]="'/admin'" class="btn btn-primary">Go back</a>

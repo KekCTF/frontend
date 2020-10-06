@@ -1,0 +1,73 @@
+<h3 class="text-white">
+  Admin page
+</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h5 class="text-white">
+        Challenges
+      </h5>
+      <a class="btn btn-primary" [routerLink]="'/createchallenge'">Create</a>
+    </div>
+    <div class="col-sm-6">
+      <h5 class="text-white">
+        Users
+      </h5>
+      <a class="btn btn-primary" [routerLink]="'/register'">Create</a>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-6">
+      <table class="table table-dark">
+        <thead>
+        <tr class="d-flex">
+          <th scope="col" class="col-3">Challenge</th>
+          <th scope="col" class="col-4">Description</th>
+          <th scope="col" class="col-2">Points</th>
+          <th scope="col" class="col-3">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="d-flex" *ngFor="let challenge of challenges">
+          <th scope="row" class="col-3">{{ challenge.title }}</th>
+          <td class="col-4">{{ challenge.description }}</td>
+          <td class="col-2">{{ challenge.points }}</td>
+          <td class="col-3">
+            <a class="btn btn-primary" [routerLink]="['/updatechallenge', challenge.id]">Update</a>
+            <br/>
+            <button class="btn btn-danger" (click)="deleteChallenge(challenge.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <table class="table table-dark">
+        <thead>
+        <tr class="d-flex">
+          <th scope="col" class="col-5">Username</th>
+          <th scope="col" class="col-2">Points</th>
+          <th scope="col" class="col-2">Role</th>
+          <th scope="col" class="col-3">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="d-flex" *ngFor="let user of users">
+          <th scope="row" class="col-5">{{ user.username }}</th>
+          <td class="col-2">{{ user.points }}</td>
+          <td class="col-2">{{ user.role }}</td>
+          <td class="col-3">
+            <a class="btn btn-primary" [routerLink]="['/updateuser', user.id]">Update</a>
+            <br *ngIf="!isAdmin(user.id)"/>
+            <button class="btn btn-warning" *ngIf="!isAdmin(user.id)" (click)="promoteUser(user.id)">Promote</button>
+            <br/>
+            <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<a [routerLink]="['/challenges']" class="btn btn-primary">Go back</a>

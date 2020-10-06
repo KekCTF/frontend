@@ -1,0 +1,39 @@
+:host {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+}
+
+:host {
+  width: 100%;
+  margin: 0;
+}
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+.col-sm-4 {
+  padding: 5px 5px;
+}
+
+.card {
+  background-color: #343a40;
+  min-height: 153px;
+  max-height: 153px;
+  height: 153px;
+}
+
+.card-body {
+
+}

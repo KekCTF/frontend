@@ -1,0 +1,23 @@
+<h1 class="text-white">
+  Updating challenge
+</h1>
+<h5 class="text-warning">
+  Id: {{ challenge.id }}
+  <br/>
+  Keep input boxes empty if you don't want to update them.
+</h5>
+<input type="text" class="form-control" [(ngModel)]="challenge.title" name="title" placeholder="Title"/>
+<ejs-richtexteditor class="form-control" id="description" [(ngModel)]="challenge.description"></ejs-richtexteditor>
+<select name="selectPoints" class="form-control" [(ngModel)]="challenge.points">
+  <option [ngValue]="100">Easy</option>
+  <option [ngValue]="200">Medium</option>
+  <option [ngValue]="400">Hard</option>
+  <option [ngValue]="800">Impossible</option>
+</select>
+<input type="text" class="form-control" [(ngModel)]="flag" name="flag" placeholder="KernelFlag{flag}"/>
+<select name="selectCategory" class="form-control" [(ngModel)]="challenge.category">
+  <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+</select>
+<button (click)="submit()" class="btn btn-primary">Submit</button>
+<br/>
+<a [routerLink]="'/admin'" class="btn btn-primary">Go back</a>

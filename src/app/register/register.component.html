@@ -1,0 +1,21 @@
+<h5 class="card-title text-center text-white">Register</h5>
+<form class="form-signin" (submit)="submit()">
+  <div class="form-label-group">
+    <input autocomplete="username" type="text" [(ngModel)]="this.username" name="inputUsername" id="inputUsername"
+           class="form-control" placeholder="Username" [disabled]="this.loading" required autofocus>
+  </div>
+
+  <div class="form-label-group">
+    <input autocomplete="password" type="password" [(ngModel)]="this.password" name="inputPassword" id="inputPassword"
+           class="form-control" placeholder="Password" [disabled]="this.loading" required>
+  </div>
+
+  <div class="form-label-group">
+    <input autocomplete="repeat-password" type="password" [(ngModel)]="this.repeatPassword" name="repeat-inputPassword" id="repeat-inputPassword"
+           class="form-control" placeholder="Repeat password" [disabled]="this.loading" required>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="this.loading">Register</button>
+  <br/>
+  <a class="btn btn-primary" [routerLink]="'/'">Have got an account?</a>
+</form>
