@@ -20,12 +20,13 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string, code: string) {
     const params = {
       username: username,
-      password: password
+      password: password,
+      code: code
     };
-    return this.http.post<Session>(`${config.apiUrl}/user/login`, params);
+    return this.http.post<Session>(`${config.apiUrl}/authentication-service/auth/login`, params);
   }
 
   logout(userId: string = JSON.parse(localStorage.getItem("session")).user.id) {

@@ -10,6 +10,11 @@
            class="form-control" placeholder="Password" [disabled]="this.loading" required>
   </div>
 
+  <div class="form-label-group">
+    <input autocomplete="code" type="text" [(ngModel)]="this.code" name="inputCode" id="inputCode"
+           class="form-control" placeholder="Google Authenticator" [disabled]="this.loading" required>
+  </div>
+
   <button class="btn btn-primary" type="submit" [disabled]="this.loading">Login</button>
   <br/>
   <a class="btn btn-primary" [routerLink]="'/register'">Haven't got an account?</a>
