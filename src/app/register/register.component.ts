@@ -13,6 +13,9 @@ export class RegisterComponent implements OnInit {
   username: string = '';
   password: string = '';
   repeatPassword: string = '';
+  team: string = '';
+  secretKey: string = '';
+  totpUrl: string = '';
   loading: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private alertService: AlertService) {
@@ -34,10 +37,12 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    this.userService.register(this.username, this.password)
+    this.userService.register(this.username, this.password, this.team)
       .subscribe(
-        () => {
-          this.router.navigate(['/']);
+        res => {
+          let items = JSON.stringify(res);
+          this.secretKey = JSON.parse(items).secretKey;
+          this.totpUrl = "otpauth://totp/KekCTF:" + this.username + "?secret=" + this.secretKey + "&issuer=KekCTF";
           this.alertService.success('Successfully created an account!');
         },
         error => {

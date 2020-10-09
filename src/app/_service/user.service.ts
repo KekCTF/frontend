@@ -36,12 +36,13 @@ export class UserService {
     return this.http.post(`${config.apiUrl}/user/logout`, params, UserService.getHttpOptions());
   }
 
-  register(username: string, password: string) {
+  register(username: string, password: string, team: string) {
     const params = {
       username: username,
-      password: password
+      password: password,
+      team: team
     };
-    return this.http.post(`${config.apiUrl}/user/`, params);
+    return this.http.post(`${config.apiUrl}/authentication-service/auth/signup`, params);
   }
 
   get(id: string) {

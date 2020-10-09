@@ -11,11 +11,27 @@
   </div>
 
   <div class="form-label-group">
-    <input autocomplete="repeat-password" type="password" [(ngModel)]="this.repeatPassword" name="repeat-inputPassword" id="repeat-inputPassword"
+    <input autocomplete="repeat-password" type="password" [(ngModel)]="this.repeatPassword" name="repeat-inputPassword"
+           id="repeat-inputPassword"
            class="form-control" placeholder="Repeat password" [disabled]="this.loading" required>
+  </div>
+
+  <div class="form-label-group">
+    <input autocomplete="team" type="text" [(ngModel)]="this.team" name="inputTeam" id="inputTeam"
+           class="form-control" placeholder="Team" [disabled]="this.loading" required>
   </div>
 
   <button class="btn btn-primary" type="submit" [disabled]="this.loading">Register</button>
   <br/>
   <a class="btn btn-primary" [routerLink]="'/'">Have got an account?</a>
+
+  <div class="text-center text-white" [style.visibility]="totpUrl == '' ? 'hidden' : 'visible'">
+    Scan the following QR code with your authenticator app:
+    <br/>
+    <ngx-qrcode [value]="totpUrl"></ngx-qrcode>
+    <br/>
+    Or use the following code:
+    <br/>
+    {{ secretKey }}
+  </div>
 </form>

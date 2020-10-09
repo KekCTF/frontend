@@ -23,6 +23,7 @@ import {UpdatechallengeComponent} from './updatechallenge/updatechallenge.compon
 import {UpdateuserComponent} from './updateuser/updateuser.component';
 import {CreatechallengeComponent} from './createchallenge/createchallenge.component';
 import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
+import {NgxQRCodeModule} from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    RichTextEditorAllModule
+    RichTextEditorAllModule,
+    NgxQRCodeModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
