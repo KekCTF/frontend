@@ -24,6 +24,7 @@ import {UpdateuserComponent} from './updateuser/updateuser.component';
 import {CreatechallengeComponent} from './createchallenge/createchallenge.component';
 import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
 import {NgxQRCodeModule} from 'ngx-qrcode2';
+import {TeamService} from './_service/team.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {NgxQRCodeModule} from 'ngx-qrcode2';
     AlertService,
     UserService,
     ChallengeService,
+    TeamService,
     AuthGuard,
     NoauthGuard,
     AdminGuard

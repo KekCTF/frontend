@@ -10,16 +10,6 @@ export class ChallengeService {
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
-  private getHttpOptions(responseType: string = 'json') {
-    let token = this.cookieService.get('token');
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      })
-    };
-  }
-
   getAll() {
     return this.http.get<Challenge[]>(`${config.apiUrl}/challenges-service/`, this.getHttpOptions());
   }
@@ -29,11 +19,12 @@ export class ChallengeService {
   }
 
   checkFlag(challengeId: string, flag: string) {
-    let params = {"flag": flag};
+    let params = {'flag': flag};
     return this.http.post(`${config.apiUrl}/challenges-service/check/${challengeId}`, params, this.getHttpOptions());
   }
 
   update(id: string, title: string, description: string, points: number, flag: string, category: string) {
+    // TODO
     let params = {
       title: title,
       points: points,
@@ -41,14 +32,16 @@ export class ChallengeService {
       description: description,
       category: category
     };
-    return this.http.put(`${config.apiUrl}/challenge/${id}`, params, this.getHttpOptions())
+    return this.http.put(`${config.apiUrl}/challenge/${id}`, params, this.getHttpOptions());
   }
 
   delete(id: string) {
+    // TODO
     return this.http.delete(`${config.apiUrl}/challenge/${id}`, this.getHttpOptions());
   }
 
   create(title: string, points: number, flag: string, description: string, category: string) {
+    // TODO
     const params = {
       title: title,
       points: points,
@@ -56,7 +49,17 @@ export class ChallengeService {
       description: description,
       category: category
     };
-    return this.http.post(`${config.apiUrl}/challenge/`, params, this.getHttpOptions())
+    return this.http.post(`${config.apiUrl}/challenge/`, params, this.getHttpOptions());
+  }
+
+  private getHttpOptions(responseType: string = 'json') {
+    let token = this.cookieService.get('token');
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
   }
 
 }

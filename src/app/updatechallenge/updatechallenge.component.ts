@@ -34,7 +34,7 @@ export class UpdatechallengeComponent implements OnInit {
   submit() {
     this.challengeService.update(this.challenge.id, this.challenge.title, this.challenge.description, this.challenge.points, this.flag, this.challenge.category).subscribe(() => {
         this.router.navigate(['/admin']);
-        this.alertService.success('Successfully updated the challenge!');
+        this.alertService.success('Successfully updated the team!');
       },
       error => {
         const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;

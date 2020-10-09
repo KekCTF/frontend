@@ -1,17 +1,14 @@
 import {User} from './User';
 
 export class Challenge {
-  private _users: User[];
-
-  get users(): User[] {
-    return this._users;
-  }
-
-  set users(value: User[]) {
-    this._users = value;
-  }
-
   private _id: string;
+  private _title: string;
+  private _description: string;
+  private _category: string;
+  private _fileURL: string;
+  private _solved: boolean;
+  private _points: number;
+
 
   get id(): string {
     return this._id;
@@ -21,8 +18,6 @@ export class Challenge {
     this._id = value;
   }
 
-  private _title: string;
-
   get title(): string {
     return this._title;
   }
@@ -30,8 +25,6 @@ export class Challenge {
   set title(value: string) {
     this._title = value;
   }
-
-  private _description: string;
 
   get description(): string {
     return this._description;
@@ -41,18 +34,6 @@ export class Challenge {
     this._description = value;
   }
 
-  private _points: number;
-
-  get points(): number {
-    return this._points;
-  }
-
-  set points(value: number) {
-    this._points = value;
-  }
-
-  private _category: string;
-
   get category(): string {
     return this._category;
   }
@@ -61,7 +42,13 @@ export class Challenge {
     this._category = value;
   }
 
-  private _solved: boolean;
+  get fileURL(): string {
+    return this._fileURL;
+  }
+
+  set fileURL(value: string) {
+    this._fileURL = value;
+  }
 
   get solved(): boolean {
     return this._solved;
@@ -69,5 +56,13 @@ export class Challenge {
 
   set solved(value: boolean) {
     this._solved = value;
+  }
+
+  get points(): number {
+    return this._points;
+  }
+
+  set points(value: number) {
+    this._points = value;
   }
 }

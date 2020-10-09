@@ -1,7 +1,11 @@
-import {Challenge} from './Challenge';
+import {Team} from './Team';
 
 export class User {
   private _id: string;
+  private _username: string;
+  private _team: Team;
+  private _role: string;
+
 
   get id(): string {
     return this._id;
@@ -11,8 +15,6 @@ export class User {
     this._id = value;
   }
 
-  private _username: string;
-
   get username(): string {
     return this._username;
   }
@@ -21,27 +23,13 @@ export class User {
     this._username = value;
   }
 
-  private _points: number;
-
-  get points(): number {
-    return this._points;
+  get team(): Team {
+    return this._team;
   }
 
-  set points(value: number) {
-    this._points = value;
+  set team(value: Team) {
+    this._team = value;
   }
-
-  private _challenges: Challenge[];
-
-  get challenges(): Challenge[] {
-    return this._challenges;
-  }
-
-  set challenges(value: Challenge[]) {
-    this._challenges = value;
-  }
-
-  private _role: string;
 
   get role(): string {
     return this._role;
@@ -49,15 +37,5 @@ export class User {
 
   set role(value: string) {
     this._role = value;
-  }
-
-  private _lastSubmit: Date;
-
-  get lastSubmit(): Date {
-    return this._lastSubmit;
-  }
-
-  set lastSubmit(value: Date) {
-    this._lastSubmit = value;
   }
 }

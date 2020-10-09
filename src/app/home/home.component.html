@@ -20,7 +20,7 @@
             <div class="card-title">
               {{ formatTitle(challenge.title) }}
             </div>
-            <a [routerLink]="['/challenge', challenge.id]" class="btn"
+            <a [routerLink]="['/team', challenge.id]" class="btn"
                [ngClass]="{'btn-primary': !challenge.solved, 'btn-success': challenge.solved}">Points: {{
               challenge.points }}</a>
           </div>

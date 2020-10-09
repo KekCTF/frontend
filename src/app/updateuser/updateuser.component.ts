@@ -35,7 +35,7 @@ export class UpdateuserComponent implements OnInit {
   submit() {
     this.userService.update(this.user.id, this.user.username, this.password).subscribe(() => {
         this.router.navigate(['/admin']);
-        this.alertService.success('Successfully updated the user!');
+        this.alertService.success('Successfully updated the team!');
       },
       error => {
         const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;

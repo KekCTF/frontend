@@ -25,7 +25,7 @@ export class CreatechallengeComponent implements OnInit {
   submit() {
     this.challengeService.create(this.challenge.title, this.challenge.points, this.flag, this.challenge.description, this.challenge.category).subscribe(() => {
         this.router.navigate(['/admin']);
-        this.alertService.success('Successfully created challenge!')
+        this.alertService.success('Successfully created team!')
       },
       error => {
         const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;

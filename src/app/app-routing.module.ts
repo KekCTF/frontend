@@ -30,7 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, AdminGuard]
   },
   {
-    path: 'challenge/:id',
+    path: 'team/:id',
     component: ChallengeComponent,
     canActivate: [AuthGuard]
   },

@@ -4,6 +4,9 @@ import {UserService} from '../_service/user.service';
 import {User} from '../_model/User';
 import {interval} from 'rxjs';
 import {Router} from '@angular/router';
+import {TeamService} from '../_service/team.service';
+import {Challenge} from '../_model/Challenge';
+import {Team} from '../_model/Team';
 
 @Component({
   selector: 'app-scoreboard',
@@ -12,12 +15,12 @@ import {Router} from '@angular/router';
 })
 export class ScoreboardComponent implements OnInit {
 
-  users: User[];
+  teams: Team[];
   hideBtn: boolean = false;
 
   timer;
 
-  constructor(private router: Router, private userService: UserService, private alertService: AlertService) {
+  constructor(private router: Router, private teamService: TeamService, private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -36,17 +39,15 @@ export class ScoreboardComponent implements OnInit {
   }
 
   updateScoreboard() {
-    this.userService.getAll().subscribe(data => {
+    this.teamService.getAll().subscribe(data => {
 
-      data.sort((a, b) => {
-        if ((b.points - a.points) !== 0) {
-          return b.points - a.points;
-        }
-
-        return new Date(a.lastSubmit).getTime() - new Date(b.lastSubmit).getTime();
+      data.sort((a: Team, b: Team) => {
+        let ap = a.points;
+        let bp = b.points;
+        return ap > bp ? -1 : 1;
       });
 
-      this.users = data;
+      this.teams = data;
     }, error => {
       const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;
       this.alertService.error(errorString);
