@@ -37,23 +37,6 @@ export class ChallengeComponent implements OnInit {
       });
   }
 
-  isSolved(): boolean {
-    if (this.challenge.id === undefined) {
-      return false;
-    }
-
-    let userId = JSON.parse(localStorage.getItem('session')).user.id;
-    let users: User[] = this.challenge.users;
-
-    for (let user of users) {
-      if (user.id === userId) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   submitFlag() {
     let challengeId = this.challenge.id;
     let userId = JSON.parse(localStorage.getItem('session')).user.id;

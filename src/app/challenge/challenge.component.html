@@ -1,7 +1,7 @@
 <h1 class="text-white">
   {{ challenge.title }}
 </h1>
-<h5 class="text-warning" *ngIf="isSolved()">
+<h5 class="text-warning" *ngIf="challenge.solved">
   This challenge is already solved by your team!
 </h5>
 <div class="text-white">
@@ -12,7 +12,7 @@
   Points: {{ challenge.points }}
 </div>
 <br/>
-<input [disabled]="isSolved()" type="text" class="form-control" [(ngModel)]="flag" name="flag" placeholder="KernelFlag{flag}"/>
-<button [disabled]="isSolved()" (click)="submitFlag()" class="btn btn-primary">Submit</button>
+<input [disabled]="challenge.solved" type="text" class="form-control" [(ngModel)]="flag" name="flag" placeholder="KernelFlag{flag}"/>
+<button [disabled]="challenge.solved" (click)="submitFlag()" class="btn btn-primary">Submit</button>
 <br/>
 <a [routerLink]="['/challenges']" class="btn btn-primary">Go back</a>
