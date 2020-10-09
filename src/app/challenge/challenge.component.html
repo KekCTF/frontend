@@ -12,7 +12,7 @@
   Points: {{ challenge.points }}
 </div>
 <br/>
-<input [disabled]="challenge.solved" type="text" class="form-control" [(ngModel)]="flag" name="flag" placeholder="KernelFlag{flag}"/>
+<input [disabled]="challenge.solved" type="text" class="form-control" [(ngModel)]="flag" name="flag" placeholder="KekCTF{flag}"/>
 <button [disabled]="challenge.solved" (click)="submitFlag()" class="btn btn-primary">Submit</button>
 <br/>
 <a [routerLink]="['/challenges']" class="btn btn-primary">Go back</a>
