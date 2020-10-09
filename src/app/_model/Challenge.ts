@@ -60,4 +60,14 @@ export class Challenge {
   set category(value: string) {
     this._category = value;
   }
+
+  private _solved: boolean;
+
+  get solved(): boolean {
+    return this._solved;
+  }
+
+  set solved(value: boolean) {
+    this._solved = value;
+  }
 }

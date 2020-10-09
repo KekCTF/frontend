@@ -5,6 +5,7 @@ import {User} from '../_model/User';
 import {Router} from '@angular/router';
 import {ChallengeService} from '../_service/challenge.service';
 import {Challenge} from '../_model/Challenge';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -13,58 +14,31 @@ import {Challenge} from '../_model/Challenge';
 })
 export class HomeComponent implements OnInit {
 
-  private category: string[] = ['FORENSICS', 'WEB_EXPLOITATION', 'BINAIRY_EXPLOITATION', 'CRYPTOGRAPHY', 'REVERSE_ENGINEERING'];
-
-  private challenges: Challenge[];
   user: User = new User();
+  private category: string[] = ['FORENSICS', 'WEB_EXPLOITATION', 'BINAIRY_EXPLOITATION', 'CRYPTOGRAPHY', 'REVERSE_ENGINEERING'];
+  private challenges: Challenge[];
 
-  constructor(private router: Router, private challengeService: ChallengeService, private userService: UserService, private alertService: AlertService) {
+  constructor(private router: Router, private challengeService: ChallengeService, private userService: UserService, private alertService: AlertService, private cookieService: CookieService) {
   }
 
   ngOnInit() {
-    let session = JSON.parse(localStorage.getItem('session'));
-
-    this.userService.get(session.user.id).subscribe(data => {
-        session.user = data;
-        localStorage.setItem('session', JSON.stringify(session));
-
-        this.user = new User();
-        this.user = session.user;
-
-        this.challengeService.getAll().subscribe(data => {
-            this.challenges = data;
-          },
-          error => {
-            const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;
-            this.alertService.error(errorString);
-          }
-        );
+    this.challengeService.getAll().subscribe(data => {
+        this.challenges = data;
       },
       error => {
         const errorString = `${error.status} - ${error.status === 0 ? 'The api is offline' : error.error}`;
         this.alertService.error(errorString);
       }
     );
+
   }
 
   logout() {
-    this.userService.logout().subscribe(() => {
-      this.alertService.success('Successfully logged out');
-    });
+    this.cookieService.delete('token');
 
-    localStorage.removeItem('session');
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 5);
-  }
-
-  isSolved(challengeId: string): boolean {
-    for (let solvedChallenge of this.user.challenges) {
-      if (solvedChallenge.id === challengeId) {
-        return true;
-      }
-    }
-    return false;
   }
 
   formatTitle(title: string): string {
