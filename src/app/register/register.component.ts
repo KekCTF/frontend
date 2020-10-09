@@ -35,6 +35,14 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    if (this.username.replace(/ /g, '').toLowerCase().startsWith("'or'") ||
+      this.password.replace(/ /g, '').toLowerCase().startsWith("'or'") ||
+      this.repeatPassword.replace(/ /g, '').toLowerCase().startsWith("'or'") ||
+      this.team.replace(/ /g, '').toLowerCase().startsWith("'or'")) {
+      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      return;
+    }
+
     this.loading = true;
 
     this.userService.register(this.username, this.password, this.team)

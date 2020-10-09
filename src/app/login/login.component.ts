@@ -27,6 +27,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    if (this.username.replace(/ /g, '').toLowerCase().startsWith("'or'") ||
+      this.password.replace(/ /g, '').toLowerCase().startsWith("'or'") ||
+      this.code.replace(/ /g, '').toLowerCase().startsWith("'or'")) {
+      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      return;
+    }
+
     this.loading = true;
 
     this.userService.login(this.username, this.password, this.code)
