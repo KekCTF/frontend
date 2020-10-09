@@ -28,9 +28,9 @@ export class ChallengeService {
     return this.http.get<Challenge>(`${config.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
   }
 
-  checkFlag(challengeId: string, flag: string, userId: string) {
-    let params = {"challengeId": challengeId, "flag": flag, "userId": userId};
-    return this.http.post(`${config.apiUrl}/challenges-service/check`, params, this.getHttpOptions());
+  checkFlag(challengeId: string, flag: string) {
+    let params = {"flag": flag};
+    return this.http.post(`${config.apiUrl}/challenges-service/check/${challengeId}`, params, this.getHttpOptions());
   }
 
   update(id: string, title: string, description: string, points: number, flag: string, category: string) {

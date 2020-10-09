@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {ChallengeService} from '../_service/challenge.service';
 import {Challenge} from '../_model/Challenge';
 import {AlertService} from '../_service/alert.service';
-import {User} from '../_model/User';
 
 @Component({
   selector: 'app-challenge',
@@ -39,9 +38,8 @@ export class ChallengeComponent implements OnInit {
 
   submitFlag() {
     let challengeId = this.challenge.id;
-    let userId = JSON.parse(localStorage.getItem('session')).user.id;
 
-    this.challengeService.checkFlag(challengeId, this.flag, userId).subscribe(() => {
+    this.challengeService.checkFlag(challengeId, this.flag).subscribe(() => {
         this.alertService.success('Flag correct! Points added to your account!');
         this.refreshChallenge();
       },
