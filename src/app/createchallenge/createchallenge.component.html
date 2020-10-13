@@ -2,7 +2,6 @@
   Create a new challenge
 </h1>
 <input type="text" class="form-control" [(ngModel)]="challenge.title" name="title" placeholder="Title"/>
-<!--<ejs-richtexteditor class="form-control" id="description" [(ngModel)]="challenge.description"></ejs-richtexteditor>-->
 <textarea class="form-control" [(ngModel)]="challenge.description"></textarea>
 <select name="selectPoints" class="form-control" [(ngModel)]="challenge.points">
   <option [ngValue]="100" selected>Easy</option>

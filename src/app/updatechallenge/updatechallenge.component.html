@@ -7,7 +7,7 @@
   Keep input boxes empty if you don't want to update them.
 </h5>
 <input type="text" class="form-control" [(ngModel)]="challenge.title" name="title" placeholder="Title"/>
-<ejs-richtexteditor class="form-control" id="description" [(ngModel)]="challenge.description"></ejs-richtexteditor>
+<textarea class="form-control" [(ngModel)]="challenge.description"></textarea>
 <select name="selectPoints" class="form-control" [(ngModel)]="challenge.points">
   <option [ngValue]="100">Easy</option>
   <option [ngValue]="200">Medium</option>

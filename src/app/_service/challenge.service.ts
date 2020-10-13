@@ -27,7 +27,6 @@ export class ChallengeService {
   }
 
   update(id: string, title: string, description: string, points: number, flag: string, category: string) {
-    // TODO
     const params = {
       title,
       points,
@@ -35,7 +34,7 @@ export class ChallengeService {
       description,
       category
     };
-    return this.http.put(`${config.apiUrl}/challenge/${id}`, params, this.getHttpOptions());
+    return this.http.put(`${config.apiUrl}/challenges-service/${id}`, params, this.getHttpOptions());
   }
 
   delete(id: string) {
