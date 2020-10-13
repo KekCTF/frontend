@@ -75,7 +75,7 @@ export class AdminComponent implements OnInit {
 
   isAdmin(id: string): boolean {
     const user = this.getUser(id);
-    return user.role === 'ADMIN';
+    return user.role === 'ROLE_ADMIN';
   }
 
   promoteUser(id: string) {

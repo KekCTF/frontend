@@ -47,8 +47,7 @@ export class UserService {
   }
 
   delete(id: string) {
-    // TODO
-    return this.http.delete(`${config.apiUrl}/user/${id}`, this.getHttpOptions());
+    return this.http.delete(`${config.apiUrl}/user-service/${id}`, this.getHttpOptions());
   }
 
   update(id: string, username: string, password: string) {
@@ -61,9 +60,8 @@ export class UserService {
   }
 
   promote(id: string) {
-    // TODO
     const params = {};
-    return this.http.patch(`${config.apiUrl}/user/promote/${id}`, params, this.getHttpOptions());
+    return this.http.patch(`${config.apiUrl}/user-service/promote/${id}`, params, this.getHttpOptions());
   }
 
   private getHttpOptions(responseType: string = 'json') {
