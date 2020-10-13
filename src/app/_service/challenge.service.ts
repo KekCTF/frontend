@@ -7,7 +7,8 @@ import {CookieService} from 'ngx-cookie-service';
 @Injectable()
 export class ChallengeService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
+  constructor(private http: HttpClient,
+              private cookieService: CookieService) {
   }
 
   getAll() {
@@ -19,18 +20,20 @@ export class ChallengeService {
   }
 
   checkFlag(challengeId: string, flag: string) {
-    let params = {'flag': flag};
+    const params = {
+      flag
+    };
     return this.http.post(`${config.apiUrl}/challenges-service/check/${challengeId}`, params, this.getHttpOptions());
   }
 
   update(id: string, title: string, description: string, points: number, flag: string, category: string) {
     // TODO
-    let params = {
-      title: title,
-      points: points,
-      flag: flag,
-      description: description,
-      category: category
+    const params = {
+      title,
+      points,
+      flag,
+      description,
+      category
     };
     return this.http.put(`${config.apiUrl}/challenge/${id}`, params, this.getHttpOptions());
   }
@@ -41,23 +44,23 @@ export class ChallengeService {
   }
 
   create(title: string, points: number, flag: string, description: string, category: string) {
-    // TODO
     const params = {
-      title: title,
-      points: points,
-      flag: flag,
-      description: description,
-      category: category
+      title,
+      description,
+      category,
+      fileURL: null,
+      flag,
+      points
     };
-    return this.http.post(`${config.apiUrl}/challenge/`, params, this.getHttpOptions());
+    return this.http.post(`${config.apiUrl}/challenges-service/`, params, this.getHttpOptions());
   }
 
   private getHttpOptions(responseType: string = 'json') {
-    let token = this.cookieService.get('token');
+    const token = this.cookieService.get('token');
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        Authorization: 'Bearer ' + token
       })
     };
   }

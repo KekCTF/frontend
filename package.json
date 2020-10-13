@@ -25,6 +25,7 @@
     "cors": "^2.8.5",
     "jwt-decode": "^3.0.0",
     "ngx-cookie-service": "^10.1.1",
+    "ngx-markdown": "^10.1.1",
     "ngx-qrcode2": "^9.0.0",
     "rxjs": "6.6.3",
     "tslib": "2.0.1",

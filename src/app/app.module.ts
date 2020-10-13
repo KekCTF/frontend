@@ -25,6 +25,7 @@ import {CreatechallengeComponent} from './createchallenge/createchallenge.compon
 import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
 import {NgxQRCodeModule} from 'ngx-qrcode2';
 import {TeamService} from './_service/team.service';
+import {MarkdownModule, MarkdownService} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {TeamService} from './_service/team.service';
     BrowserModule,
     AppRoutingModule,
     RichTextEditorAllModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -56,7 +58,8 @@ import {TeamService} from './_service/team.service';
     TeamService,
     AuthGuard,
     NoauthGuard,
-    AdminGuard
+    AdminGuard,
+    MarkdownService
   ],
   bootstrap: [AppComponent]
 })

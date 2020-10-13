@@ -12,10 +12,12 @@ import {ChallengeService} from '../_service/challenge.service';
 export class CreatechallengeComponent implements OnInit {
 
   challenge: Challenge = new Challenge();
-  flag: string = '';
+  flag = '';
   categories: string[] = ['FORENSICS', 'WEB_EXPLOITATION', 'BINAIRY_EXPLOITATION', 'CRYPTOGRAPHY', 'REVERSE_ENGINEERING'];
 
-  constructor(private router: Router, private alertService: AlertService, private challengeService: ChallengeService) {
+  constructor(private router: Router,
+              private alertService: AlertService,
+              private challengeService: ChallengeService) {
   }
 
   ngOnInit() {
@@ -23,7 +25,11 @@ export class CreatechallengeComponent implements OnInit {
   }
 
   submit() {
-    this.challengeService.create(this.challenge.title, this.challenge.points, this.flag, this.challenge.description, this.challenge.category).subscribe(() => {
+    this.challengeService.create(this.challenge.title,
+      this.challenge.points,
+      this.flag,
+      this.challenge.description,
+      this.challenge.category).subscribe(() => {
         this.router.navigate(['/admin']);
         this.alertService.success('Successfully created team!')
       },

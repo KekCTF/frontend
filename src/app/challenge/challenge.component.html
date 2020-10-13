@@ -5,7 +5,8 @@
   This challenge is already solved by your team!
 </h5>
 <div class="text-white">
-  <div [innerHTML]="this.challenge.description"></div>
+<!--  <div [innerHTML]="this.challenge.description"></div>-->
+  <markdown [data]="this.challenge.description"></markdown>
 </div>
 <br/>
 <div class="text-white">
