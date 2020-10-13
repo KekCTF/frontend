@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
   private category: string[] = ['FORENSICS', 'WEB_EXPLOITATION', 'BINAIRY_EXPLOITATION', 'CRYPTOGRAPHY', 'REVERSE_ENGINEERING'];
   private challenges: Challenge[];
 
-  constructor(private router: Router, private challengeService: ChallengeService, private userService: UserService, private alertService: AlertService, private cookieService: CookieService) {
+  constructor(private router: Router,
+              private challengeService: ChallengeService,
+              private userService: UserService,
+              private alertService: AlertService,
+              private cookieService: CookieService) {
   }
 
   ngOnInit() {
@@ -62,7 +66,7 @@ export class HomeComponent implements OnInit {
       return false;
     }
 
-    let session = JSON.parse(localStorage.getItem('session'));
+    const session = JSON.parse(localStorage.getItem('session'));
     if (!session) {
       return false;
     }
@@ -71,12 +75,12 @@ export class HomeComponent implements OnInit {
   }
 
   getCategoryArrays() {
-    let categories = [];
-    for (let val of this.category) {
+    const categories = [];
+    for (const val of this.category) {
       let catName = val.toLowerCase().replace('_', ' ');
       catName = catName.charAt(0).toUpperCase() + catName.slice(1);
 
-      let item = {category: catName, challenges: []};
+      const item = {category: catName, challenges: []};
 
       item.challenges = this.getAllFromCategory(val).sort((a, b) => {
         return a.points - b.points;
@@ -87,11 +91,11 @@ export class HomeComponent implements OnInit {
   }
 
   private getAllFromCategory(category: string) {
-    let categoryChallenge = [];
-    if (this.challenges == undefined) {
+    const categoryChallenge = [];
+    if (this.challenges === undefined) {
       return categoryChallenge;
     }
-    for (let challenge of this.challenges) {
+    for (const challenge of this.challenges) {
       if (challenge.category === category) {
         categoryChallenge.push(challenge);
       }
