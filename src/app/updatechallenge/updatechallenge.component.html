@@ -21,3 +21,9 @@
 <button (click)="submit()" class="btn btn-primary">Submit</button>
 <br/>
 <a [routerLink]="'/admin'" class="btn btn-primary">Go back</a>
+<br/>
+<div class="text-white">
+  Description preview:
+  <br/>
+  <markdown [data]="challenge.description"></markdown>
+</div>
