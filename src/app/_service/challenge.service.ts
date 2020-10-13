@@ -39,8 +39,7 @@ export class ChallengeService {
   }
 
   delete(id: string) {
-    // TODO
-    return this.http.delete(`${config.apiUrl}/challenge/${id}`, this.getHttpOptions());
+    return this.http.delete(`${config.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
   }
 
   create(title: string, points: number, flag: string, description: string, category: string) {
