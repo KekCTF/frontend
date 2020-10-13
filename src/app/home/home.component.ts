@@ -66,12 +66,7 @@ export class HomeComponent implements OnInit {
       return false;
     }
 
-    const session = JSON.parse(localStorage.getItem('session'));
-    if (!session) {
-      return false;
-    }
-
-    return session.user.role === 'ADMIN';
+    return this.cookieService.get('role') === 'ROLE_ADMIN';
   }
 
   getCategoryArrays() {

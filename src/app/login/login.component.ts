@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         res => {
           const item = JSON.stringify(res);
           this.cookieService.set('token', JSON.parse(item).token);
+          this.cookieService.set('role', JSON.parse(item).role);
           setTimeout(() => {
             this.router.navigate(['/challenges']);
           }, 5)
