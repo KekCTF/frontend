@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteChallenge(id: string) {
-    let challenge = this.getChallenge(id);
+    const challenge = this.getChallenge(id);
     if (!confirm(`Are you sure you want to delete challenge '${challenge.title}'?\n\nTHIS CANNOT BE UNDONE!`)) {
       return;
     }
@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(id: string) {
-    let user = this.getUser(id);
+    const user = this.getUser(id);
     if (!confirm(`Are you sure you want to delete user '${user.username}'?\n\nTHIS CANNOT BE UNDONE!`)) {
       return;
     }
@@ -74,12 +74,12 @@ export class AdminComponent implements OnInit {
   }
 
   isAdmin(id: string): boolean {
-    let user = this.getUser(id);
+    const user = this.getUser(id);
     return user.role === 'ADMIN';
   }
 
   promoteUser(id: string) {
-    let user = this.getUser(id);
+    const user = this.getUser(id);
     if (!confirm(`Are you sure you want to promote user '${user.username}'?\n\nTHIS CANNOT BE REVERSED!`)) {
       return;
     }
@@ -94,7 +94,7 @@ export class AdminComponent implements OnInit {
   }
 
   private getUser(id: string): User {
-    for (let user of this.users) {
+    for (const user of this.users) {
       if (user.id === id) {
         return user;
       }
@@ -102,7 +102,7 @@ export class AdminComponent implements OnInit {
   }
 
   private getChallenge(id: string): Challenge {
-    for (let challenge of this.challenges) {
+    for (const challenge of this.challenges) {
       if (challenge.id === id) {
         return challenge;
       }

@@ -8,30 +8,31 @@ import {CookieService} from 'ngx-cookie-service';
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
+  constructor(private http: HttpClient,
+              private cookieService: CookieService) {
   }
 
   login(username: string, password: string, code: string) {
     const params = {
-      username: username,
-      password: password,
-      code: code
+      username,
+      password,
+      code
     };
     return this.http.post<Session>(`${config.apiUrl}/authentication-service/auth/login`, params);
   }
 
   logout(userId: string = JSON.parse(localStorage.getItem('session')).user.id) {
     const params = {
-      userId: userId
+      userId
     };
     return this.http.post(`${config.apiUrl}/user/logout`, params, this.getHttpOptions());
   }
 
   register(username: string, password: string, team: string) {
     const params = {
-      username: username,
-      password: password,
-      team: team
+      username,
+      password,
+      team
     };
     return this.http.post(`${config.apiUrl}/authentication-service/auth/signup`, params);
   }
@@ -42,8 +43,7 @@ export class UserService {
   }
 
   getAll() {
-    // TODO
-    return this.http.get<User[]>(`${config.apiUrl}/user/`, this.getHttpOptions());
+    return this.http.get<User[]>(`${config.apiUrl}/user-service/`, this.getHttpOptions());
   }
 
   delete(id: string) {
@@ -53,25 +53,25 @@ export class UserService {
 
   update(id: string, username: string, password: string) {
     // TODO
-    let params = {
-      username: username,
-      password: password
+    const params = {
+      username,
+      password
     };
     return this.http.put(`${config.apiUrl}/user/${id}`, params, this.getHttpOptions());
   }
 
   promote(id: string) {
     // TODO
-    let params = {};
+    const params = {};
     return this.http.patch(`${config.apiUrl}/user/promote/${id}`, params, this.getHttpOptions());
   }
 
   private getHttpOptions(responseType: string = 'json') {
-    let token = this.cookieService.get('token');
+    const token = this.cookieService.get('token');
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        Authorization: 'Bearer ' + token
       })
     };
   }
