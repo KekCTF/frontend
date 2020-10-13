@@ -38,8 +38,7 @@ export class UserService {
   }
 
   get(id: string) {
-    // TODO
-    return this.http.get<User>(`${config.apiUrl}/user/${id}`, this.getHttpOptions());
+    return this.http.get<User>(`${config.apiUrl}/user-service/${id}`, this.getHttpOptions());
   }
 
   getAll() {
@@ -50,13 +49,13 @@ export class UserService {
     return this.http.delete(`${config.apiUrl}/user-service/${id}`, this.getHttpOptions());
   }
 
-  update(id: string, username: string, password: string) {
-    // TODO
+  update(id: string, username: string, password: string, team: string) {
     const params = {
       username,
-      password
+      password,
+      team
     };
-    return this.http.put(`${config.apiUrl}/user/${id}`, params, this.getHttpOptions());
+    return this.http.put(`${config.apiUrl}/user-service/${id}`, params, this.getHttpOptions());
   }
 
   promote(id: string) {

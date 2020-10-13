@@ -8,6 +8,10 @@
 </h5>
 <input type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="Username"/>
 <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password"/>
-<button (click)="submit()" class="btn btn-primary">Submit</button>
+<input type="text" class="form-control" [(ngModel)]="user.teamName" name="teamName" placeholder="team"/>
+<div class="text-danger">
+  This feature is not yet implemented
+</div>
+<button (click)="submit()" class="btn btn-primary" disabled>Submit</button>
 <br/>
 <a [routerLink]="'/admin'" class="btn btn-primary">Go back</a>
