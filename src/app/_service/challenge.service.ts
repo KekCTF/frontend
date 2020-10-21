@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {config} from '../config';
 import {Challenge} from '../_model/Challenge';
 import {CookieService} from 'ngx-cookie-service';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ChallengeService {
@@ -12,18 +12,18 @@ export class ChallengeService {
   }
 
   getAll() {
-    return this.http.get<Challenge[]>(`${config.apiUrl}/challenges-service/`, this.getHttpOptions());
+    return this.http.get<Challenge[]>(`${environment.apiUrl}/challenges-service/`, this.getHttpOptions());
   }
 
   get(id: string) {
-    return this.http.get<Challenge>(`${config.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
+    return this.http.get<Challenge>(`${environment.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
   }
 
   checkFlag(challengeId: string, flag: string) {
     const params = {
       flag
     };
-    return this.http.post(`${config.apiUrl}/challenges-service/check/${challengeId}`, params, this.getHttpOptions());
+    return this.http.post(`${environment.apiUrl}/challenges-service/check/${challengeId}`, params, this.getHttpOptions());
   }
 
   update(id: string, title: string, description: string, points: number, flag: string, category: string) {
@@ -34,11 +34,11 @@ export class ChallengeService {
       description,
       category
     };
-    return this.http.put(`${config.apiUrl}/challenges-service/${id}`, params, this.getHttpOptions());
+    return this.http.put(`${environment.apiUrl}/challenges-service/${id}`, params, this.getHttpOptions());
   }
 
   delete(id: string) {
-    return this.http.delete(`${config.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
+    return this.http.delete(`${environment.apiUrl}/challenges-service/${id}`, this.getHttpOptions());
   }
 
   create(title: string, points: number, flag: string, description: string, category: string) {
@@ -50,7 +50,7 @@ export class ChallengeService {
       flag,
       points
     };
-    return this.http.post(`${config.apiUrl}/challenges-service/`, params, this.getHttpOptions());
+    return this.http.post(`${environment.apiUrl}/challenges-service/`, params, this.getHttpOptions());
   }
 
   private getHttpOptions(responseType: string = 'json') {

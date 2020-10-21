@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
-import {config} from '../config';
 import {Team} from '../_model/Team';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class TeamService {
@@ -11,11 +11,11 @@ export class TeamService {
   }
 
   getAll() {
-    return this.http.get<Team[]>(`${config.apiUrl}/team-service/`, this.getHttpOptions());
+    return this.http.get<Team[]>(`${environment.apiUrl}/team-service/`, this.getHttpOptions());
   }
 
   private getHttpOptions(responseType: string = 'json') {
-    let token = this.cookieService.get('token');
+    const token = this.cookieService.get('token');
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
