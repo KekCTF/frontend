@@ -12,6 +12,7 @@ import {UserService} from '../_service/user.service';
 export class UpdateuserComponent implements OnInit {
 
   user: User = new User();
+  team = '';
   password = '';
 
   constructor(private router: Router,
@@ -34,7 +35,7 @@ export class UpdateuserComponent implements OnInit {
   }
 
   submit() {
-    this.userService.update(this.user.id, this.user.username, this.password, this.user.teamName).subscribe(() => {
+    this.userService.update(this.user.id, this.user.username, this.password, this.team).subscribe(() => {
         this.router.navigate(['/admin']);
         this.alertService.success('Successfully updated the user!');
       },
