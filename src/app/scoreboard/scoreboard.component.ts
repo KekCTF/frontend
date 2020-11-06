@@ -25,15 +25,18 @@ export class ScoreboardComponent implements OnInit {
     this.updateScoreboard();
 
     this.timer = interval(5000).subscribe(() => {
-      this.checkIfRightPath();
-      this.updateScoreboard();
+      if (this.checkIfRightPath()) {
+        this.updateScoreboard();
+      }
     });
   }
 
-  checkIfRightPath() {
+  checkIfRightPath(): boolean {
     if (this.router.url !== '/scoreboard') {
       this.timer.unsubscribe();
+      return false;
     }
+    return true;
   }
 
   updateScoreboard() {
