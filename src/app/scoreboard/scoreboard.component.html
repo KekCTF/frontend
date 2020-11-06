@@ -9,7 +9,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="d-flex" *ngFor="let team of teams; let i = index">
+    <tr class="d-flex" *ngFor="let team of teams; let i = index"
+        [ngStyle]="{'font-weight':selfTeamName === team.name ? 'bold' : 'normal'}">
       <th scope="row" class="col-1">{{ i + 1 }}</th>
       <td class="col-7">{{ team.name }}</td>
       <td class="col-2">{{ team.points }}</td>
@@ -23,4 +24,5 @@
   Hide button
 </label>
 <br/>
-<a [routerLink]="['/challenges']" class="btn btn-primary" [style.visibility]="hideBtn ?  'hidden' : 'visible'">Go back</a>
+<a [routerLink]="['/challenges']" class="btn btn-primary" [style.visibility]="hideBtn ?  'hidden' : 'visible'">Go
+  back</a>

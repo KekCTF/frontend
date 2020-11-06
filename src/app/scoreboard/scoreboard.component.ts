@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertService} from '../_service/alert.service';
-import {UserService} from '../_service/user.service';
-import {User} from '../_model/User';
 import {interval} from 'rxjs';
 import {Router} from '@angular/router';
 import {TeamService} from '../_service/team.service';
-import {Challenge} from '../_model/Challenge';
 import {Team} from '../_model/Team';
 
 @Component({
@@ -16,7 +13,8 @@ import {Team} from '../_model/Team';
 export class ScoreboardComponent implements OnInit {
 
   teams: Team[];
-  hideBtn: boolean = false;
+  selfTeamName = '';
+  hideBtn = false;
 
   timer;
 
@@ -42,10 +40,16 @@ export class ScoreboardComponent implements OnInit {
     this.teamService.getAll().subscribe(data => {
 
       data.sort((a: Team, b: Team) => {
-        let ap = a.points;
-        let bp = b.points;
+        const ap = a.points;
+        const bp = b.points;
         return ap > bp ? -1 : 1;
       });
+
+      data.forEach(team => {
+        if (JSON.parse(JSON.stringify(team)).self === true) {
+          this.selfTeamName = team.name;
+        }
+      })
 
       this.teams = data;
     }, error => {
